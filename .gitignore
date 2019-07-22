@@ -105,3 +105,9 @@ venv.bak/
 
 # config file
 config.py
+.idea/libraries/R_User_Library.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/SpotifyScript.iml
+.idea/vcs.xml
+.idea/workspace.xml
