@@ -5,3 +5,6 @@ Make sure to follow these steps to run the script:
 - Make a practice app (just give it all permissions)
 - Get a user token from this link (spotipy oath seems to be having trouble with this step): https://developer.spotify.com/console/get-album/
 - Add the token to your config file (example provided)
+
+Resources:
+- https://spotipy.readthedocs.io/en/latest/#api-reference
