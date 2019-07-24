@@ -70,15 +70,17 @@ def build_track_objects(tracks):
     objects = []
     for track in tracks:
         indices = [i[0] for i in tracks[track]]
-        obj = {"uri": track[1], "positions": indices}
+        obj = {"uri": str(track[1]), "positions": indices}
         objects.append((track[0], obj))
     return objects
 
 
 def remove_dupes(duplicates, sp, playlist_id):
+    tracks = []
     for dupe in duplicates:
         obj = dupe[1]
-        sp.user_playlist_remove_specific_occurrences_of_tracks(username,playlist_id,obj)
+        tracks.append(obj)
+    sp.user_playlist_remove_specific_occurrences_of_tracks(username,playlist_id,tracks)
 
 
 
