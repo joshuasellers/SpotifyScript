@@ -59,7 +59,7 @@ def get_tracks(spotify, playlist):
             if tracks[song]['track']['id'] == track:
                 if count != 1:
                     count -= 1
-                    if track not in removable_tracks:
+                    if (tracks[song]['track']['name'],track) not in removable_tracks:
                         removable_tracks[(tracks[song]['track']['name'],track)] = [[song]]
                     else:
                         removable_tracks[(tracks[song]['track']['name'],track)].append([song])
@@ -90,12 +90,12 @@ def script():
             if item['owner']['id'] == username:
                 playlist_id = item['id']
                 playlist_name = item['name']
-                dupes = get_tracks(sp, item['id'])
 
                 print('************************')
                 print(playlist_name)
                 print(playlist_id)
                 print("")
+                dupes = get_tracks(sp, item['id'])
                 print("Duplicates: ", dupes)
                 remove_dupes(dupes, sp, playlist_id)
                 print("")
