@@ -29,6 +29,11 @@ def get_playlists(spotify):
     return r
 
 
+def printSongs(tracks):
+    for track in tracks:
+        print (track['track']['name'])
+
+
 def get_tracks(spotify, playlist):
     tracks = []
     empty = False
@@ -43,6 +48,7 @@ def get_tracks(spotify, playlist):
             empty = True
         else:
             tracks += result['items']
+    printSongs(tracks)
     track_tracker = {}
     for track in tracks:
         if track['track']['id'] in track_tracker:
@@ -80,7 +86,8 @@ def remove_dupes(duplicates, sp, playlist_id):
     for dupe in duplicates:
         obj = dupe[1]
         tracks.append(obj)
-    sp.user_playlist_remove_specific_occurrences_of_tracks(username,playlist_id,tracks)
+    if len(tracks) > 0:
+        sp.user_playlist_remove_specific_occurrences_of_tracks(username,playlist_id,tracks)
 
 
 
@@ -97,6 +104,7 @@ def script():
                 print(playlist_name)
                 print(playlist_id)
                 print("")
+                print("Tracks: ")
                 dupes = get_tracks(sp, item['id'])
                 print("Duplicates: ", dupes)
                 remove_dupes(dupes, sp, playlist_id)
