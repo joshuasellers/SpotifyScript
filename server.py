@@ -40,7 +40,7 @@ def get_tracks(spotify, playlist):
     offset = 0
     while not empty:
         result = spotify.user_playlist_tracks(username,playlist,fields=None,limit=100,offset=offset,market=None)
-        offset += 50
+        offset += 100
         if len(result['items']) == 0:
             empty = True
         elif len(result['items']) < 50:
